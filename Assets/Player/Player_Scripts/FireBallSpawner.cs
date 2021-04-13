@@ -10,7 +10,7 @@ public class FireBallSpawner : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(fireBall, firePoint.position, firePoint.rotation);
         }
