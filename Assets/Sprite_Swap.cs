@@ -1,35 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Sprite_Swap : MonoBehaviour
 {
-    public GameObject Left;
-    public GameObject Right;
+
     public int spriteIndex;
     public List<Sprite> image = new List<Sprite>();
     void Start()
     {
         spriteIndex = 0;
-        gameObject.GetComponent<SpriteRenderer>().sprite = image[spriteIndex];
+        gameObject.GetComponent<Image>().sprite = image[spriteIndex];
 
     }
 
+    void Update() {
 
+        previousItem();
+        nextItem();
+    
+    }
 
     public void previousItem()
     {
-        if (spriteIndex == 0)
+        if (Input.GetKeyDown(KeyCode.E) && spriteIndex == 0)
         {
             spriteIndex = image.Count - 1;                
-            gameObject.GetComponent<SpriteRenderer>().sprite = image[spriteIndex];
+            gameObject.GetComponent<Image>().sprite = image[spriteIndex];
             Debug.Log(spriteIndex);              
         }
-        if (spriteIndex <= image.Count - 1)
+        if (Input.GetKeyDown(KeyCode.E) && spriteIndex <= image.Count - 1)
         {
             spriteIndex -= 1;            
-            gameObject.GetComponent<SpriteRenderer>().sprite = image[spriteIndex];
+            gameObject.GetComponent<Image>().sprite = image[spriteIndex];
             Debug.Log(spriteIndex);
 
            
@@ -40,17 +44,17 @@ public class Sprite_Swap : MonoBehaviour
 
     public void nextItem()
     {
-        if (spriteIndex < image.Count)
+        if (Input.GetKeyDown(KeyCode.Q) && spriteIndex < image.Count)
         {
             spriteIndex += 1;
             Debug.Log(spriteIndex);
             Debug.Log(image.Count);
-            gameObject.GetComponent<SpriteRenderer>().sprite = image[spriteIndex];
+            gameObject.GetComponent<Image>().sprite = image[spriteIndex];
 
         if (spriteIndex >= (image.Count) - 1)
             {
             spriteIndex = 0;
-            gameObject.GetComponent<SpriteRenderer>().sprite = image[spriteIndex];
+            gameObject.GetComponent<Image>().sprite = image[spriteIndex];
             Debug.Log(spriteIndex);
             }
         }
