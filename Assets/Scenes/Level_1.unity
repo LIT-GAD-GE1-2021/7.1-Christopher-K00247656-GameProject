@@ -3406,7 +3406,7 @@ RectTransform:
   m_GameObject: {fileID: 1613898552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5368, y: 2.5368, z: 2.5368}
   m_Children: []
   m_Father: {fileID: 1564051671}
   m_RootOrder: 2
@@ -3436,7 +3436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c0c3be49ea749f46bc6aefe9183ad82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 109dfb420f10a2d4884e0ad5b03bdbbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3465,6 +3465,7 @@ GameObject:
   - component: {fileID: 1660428188}
   - component: {fileID: 1660428190}
   - component: {fileID: 1660428189}
+  - component: {fileID: 1660428191}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3481,7 +3482,7 @@ RectTransform:
   m_GameObject: {fileID: 1660428187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.99528, y: 0.99528, z: 0.99528}
   m_Children: []
   m_Father: {fileID: 1564051671}
   m_RootOrder: 3
@@ -3511,7 +3512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 109dfb420f10a2d4884e0ad5b03bdbbd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a78577e44f1bc72429b3b441b2d8a814, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3529,6 +3530,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660428187}
   m_CullTransparentMesh: 0
+--- !u!114 &1660428191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660428187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61082dc8b29a2d141a60b7845132012b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Left: {fileID: 0}
+  Right: {fileID: 0}
+  spriteIndex: 5
+  image:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: a78577e44f1bc72429b3b441b2d8a814, type: 3}
+  - {fileID: 21300000, guid: c5673049ccac5d742bcc3cd5fca4324f, type: 3}
+  - {fileID: 21300000, guid: 3f70673c14b82e746b1dd78bb5d91596, type: 3}
+  - {fileID: 21300000, guid: 9c0c3be49ea749f46bc6aefe9183ad82, type: 3}
+  - {fileID: 0}
 --- !u!1001 &1695453341
 PrefabInstance:
   m_ObjectHideFlags: 0
