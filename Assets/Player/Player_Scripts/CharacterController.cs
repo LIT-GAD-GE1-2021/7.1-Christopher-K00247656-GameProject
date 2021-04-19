@@ -16,7 +16,7 @@ public class CharacterController : MonoBehaviour
     public int healthNumber = 5;
     public int coinNumber;
     private int hitVelocity;
-    public GameObject winCanvas;
+    //public GameObject winCanvas;
     public GameObject UICanvas;
     public GameObject loseCanvas;
 
@@ -25,7 +25,7 @@ public class CharacterController : MonoBehaviour
     {
         Time.timeScale = 1;
         health.text = "" + healthNumber;
-        winCanvas.SetActive(false);
+       // winCanvas.SetActive(false);
         loseCanvas.SetActive(false);
 
     }
@@ -52,7 +52,7 @@ public class CharacterController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             coinNumber += 1;
-
+            
         }
 
     }
@@ -72,7 +72,7 @@ public class CharacterController : MonoBehaviour
         coins.text = "x" + coinNumber;
         moveRightandLeft();
         moveUp();
-        win();
+       // win();
         death();
     }
     void moveRightandLeft()
@@ -129,23 +129,23 @@ public class CharacterController : MonoBehaviour
             theAnimator.SetBool("jump", true);
         }
     }
+ 
+    //void win()
+    //{
+    //    if (coinNumber >= 3)
+    //    {
+    //        Time.timeScale = 0;
 
-    void win()
-    {
-        if (coinNumber >= 3)
-        {
-            Time.timeScale = 0;
+    //        UICanvas.SetActive(false);
+    //        winCanvas.SetActive(true);
+    //        if (Input.GetKeyDown(KeyCode.R) == true)
+    //        {
+    //            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
-            UICanvas.SetActive(false);
-            winCanvas.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.R) == true)
-            {
-                Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+    //        }
 
-            }
-
-        }
-    }
+    //    }
+    //}
     void death()
     {
         if (healthNumber <= 0)

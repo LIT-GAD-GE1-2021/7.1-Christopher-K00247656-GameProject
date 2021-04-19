@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Projectile
   - GroundPlatform
+  - Enemy
+  - Killzone
+  - Patrol Bounds
+  - Collectable
   layers:
   - Default
   - TransparentFX
@@ -15,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 
