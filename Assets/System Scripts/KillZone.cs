@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class KillZone : MonoBehaviour
 {
-    public GameObject UICanvas;
-    public GameObject loseCanvas;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.tag == "Player")
         {
-            UICanvas.SetActive(false);
-            loseCanvas.SetActive(true);
+            GameManager.instance.UI.SetActive(false);
+            GameManager.instance.loseMenu.SetActive(true);
+            destroyPlayer();
         }
         else
         {
             Destroy(collision.gameObject);
         }
-
+       
     }
+
+    private IEnumerator destroyPlayer()
+        {
+            while (true)
+            {
+            yield return new WaitForSeconds(4);
+            Destroy(GameObject.FindWithTag("Player"));
+        }
+        }
 }

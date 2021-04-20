@@ -8,14 +8,13 @@ public class Timer : MonoBehaviour
 
     public float timeRemaining = 10;
     private bool timerRunning;
-    public Text timer;
-    // Start is called before the first frame update
+    //public Text timer;
+
     void Start()
     {
         timerRunning = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (timerRunning)
@@ -23,7 +22,7 @@ public class Timer : MonoBehaviour
             if (timeRemaining >= 0)
             {
                 timeRemaining -= Time.deltaTime;
-                timer.text = "" + timeRemaining;
+                //timer.text = "" + timeRemaining;
             }
             else
             {

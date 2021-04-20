@@ -19,17 +19,17 @@ public class Sprite_Swap : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (LevelManager.instance.spriteIndex == 0)
+            if (GameManager.instance.spriteIndex == 0)
             {
-                LevelManager.instance.spriteIndex = image.Count - 1;
-                gameObject.GetComponent<Image>().sprite = image[LevelManager.instance.spriteIndex];
-                Debug.Log(LevelManager.instance.spriteIndex);
+                GameManager.instance.spriteIndex = image.Count - 1;
+                gameObject.GetComponent<Image>().sprite = image[GameManager.instance.spriteIndex];
+                Debug.Log(GameManager.instance.spriteIndex);
             }
-            if (LevelManager.instance.spriteIndex <= image.Count - 1)
+            if (GameManager.instance.spriteIndex <= image.Count - 1)
             {
-                LevelManager.instance.spriteIndex -= 1;
-                gameObject.GetComponent<Image>().sprite = image[LevelManager.instance.spriteIndex];
-                Debug.Log(LevelManager.instance.spriteIndex);
+                GameManager.instance.spriteIndex -= 1;
+                gameObject.GetComponent<Image>().sprite = image[GameManager.instance.spriteIndex];
+                Debug.Log(GameManager.instance.spriteIndex);
 
 
             }
@@ -42,18 +42,18 @@ public class Sprite_Swap : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
 
-            if (LevelManager.instance.spriteIndex < image.Count)
+            if (GameManager.instance.spriteIndex < image.Count)
             {
-                LevelManager.instance.spriteIndex += 1;
-                Debug.Log(LevelManager.instance.spriteIndex);
+                GameManager.instance.spriteIndex += 1;
+                Debug.Log(GameManager.instance.spriteIndex);
                 Debug.Log(image.Count);
-                gameObject.GetComponent<Image>().sprite = image[LevelManager.instance.spriteIndex];
+                gameObject.GetComponent<Image>().sprite = image[GameManager.instance.spriteIndex];
 
-                if (LevelManager.instance.spriteIndex >= (image.Count) - 1)
+                if (GameManager.instance.spriteIndex >= (image.Count) - 1)
                 {
-                    LevelManager.instance.spriteIndex = 0;
-                    gameObject.GetComponent<Image>().sprite = image[LevelManager.instance.spriteIndex];
-                    Debug.Log(LevelManager.instance.spriteIndex);
+                    GameManager.instance.spriteIndex = 0;
+                    gameObject.GetComponent<Image>().sprite = image[GameManager.instance.spriteIndex];
+                    Debug.Log(GameManager.instance.spriteIndex);
                 }
             }
         }

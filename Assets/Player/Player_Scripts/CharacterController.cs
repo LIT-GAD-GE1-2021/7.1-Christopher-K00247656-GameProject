@@ -2,31 +2,31 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using System.Threading;
 
 public class CharacterController : MonoBehaviour
 {
-    public Rigidbody2D controller;
+
+    Rigidbody2D controller;
+    Animator theAnimator;
     public float jumpForce;
     public float speed;
-    public bool isGrounded;
-    public Animator theAnimator;
-    public Text health;
-    public Text coins;
-    public int healthNumber = 5;
-    public int coinNumber;
+    private bool isGrounded;   
     private int hitVelocity;
-    //public GameObject winCanvas;
-    public GameObject UICanvas;
-    public GameObject loseCanvas;
+    private float fallMultiplier = 2.5f;
+    private float lowJumpMultiplier = 2f;
 
+    void Awake()
+    {
+        controller = GetComponent<Rigidbody2D>();
+        theAnimator = GetComponent<Animator>();
+    }
 
     void Start()
     {
         Time.timeScale = 1;
-        health.text = "" + healthNumber;
-       // winCanvas.SetActive(false);
-        loseCanvas.SetActive(false);
+        GameManager.instance.health.text = "" + GameManager.instance.healthNumber;
+        GameManager.instance.UI.SetActive(true);
+        GameManager.instance.loseMenu.SetActive(false);
 
     }
 
@@ -43,15 +43,14 @@ public class CharacterController : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
 
-            healthNumber -= 1;
-            health.text = "" + healthNumber;
+            GameManager.instance.healthNumber -= 1;
+            GameManager.instance.health.text = "" + GameManager.instance.healthNumber;
             controller.velocity = Vector2.up * 10;
             controller.velocity = Vector2.left * 10;
         }
         if (collision.gameObject.tag == "Collectable")
         {
-            Destroy(collision.gameObject);
-            coinNumber += 1;
+            GameManager.instance.coinNumber += 1;
             
         }
 
@@ -69,11 +68,20 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        coins.text = "x" + coinNumber;
-        moveRightandLeft();
-        moveUp();
-       // win();
-        death();
+            if (controller.velocity.y < 0)
+            {
+                controller.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (controller.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                controller.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+
+            }
+
+            GameManager.instance.coins.text = "x" + GameManager.instance.coinNumber;
+            moveRightandLeft();
+            moveUp();
+            death();
     }
     void moveRightandLeft()
     {
@@ -129,29 +137,12 @@ public class CharacterController : MonoBehaviour
             theAnimator.SetBool("jump", true);
         }
     }
- 
-    //void win()
-    //{
-    //    if (coinNumber >= 3)
-    //    {
-    //        Time.timeScale = 0;
-
-    //        UICanvas.SetActive(false);
-    //        winCanvas.SetActive(true);
-    //        if (Input.GetKeyDown(KeyCode.R) == true)
-    //        {
-    //            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
-
-    //        }
-
-    //    }
-    //}
     void death()
     {
-        if (healthNumber <= 0)
+        if (GameManager.instance.healthNumber <= 0)
         {
-            UICanvas.SetActive(false);
-            loseCanvas.SetActive(true);
+            GameManager.instance.UI.SetActive(false);
+            GameManager.instance.loseMenu.SetActive(true);
         }
     }
 }

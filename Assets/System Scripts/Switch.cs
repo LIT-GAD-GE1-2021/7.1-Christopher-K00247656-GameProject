@@ -6,9 +6,9 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     public bool switchActive;
-    public SpriteRenderer color;
+    //public SpriteRenderer color;
     private Animation myAnimationComponent1;
-    public GameObject door;
+    //public GameObject door;
     private bool switchOnOff;
 
 
@@ -22,9 +22,9 @@ public class Switch : MonoBehaviour
         if (switchActive == true && switchOnOff == false)
         {   
 
-            Color someColour;
-            someColour = new Color(1, 0, 0);
-            color.color = someColour;
+            //Color someColour;
+            //someColour = new Color(1, 0, 0);
+           // color.color = someColour;
             if (Input.GetKey(KeyCode.E) && switchOnOff == false)
             {
 
@@ -35,9 +35,9 @@ public class Switch : MonoBehaviour
 
                 if (switchOnOff == true)
                 {
-                    someColour = new Color(1, 1, 1);
-                    color.color = someColour;
-                    Object.Destroy(door);
+                    //someColour = new Color(1, 1, 1);
+                    //color.color = someColour;
+                   // Object.Destroy(door);
 
                 }
 
@@ -47,9 +47,9 @@ public class Switch : MonoBehaviour
         }
         if (switchActive == false)
         {
-            Color someColour;
-            someColour = new Color(1, 1, 1);
-            color.color = someColour;
+            //Color someColour;
+            //someColour = new Color(1, 1, 1);
+            //color.color = someColour;
         }
     }
 
