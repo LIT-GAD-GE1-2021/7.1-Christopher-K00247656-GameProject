@@ -8,7 +8,7 @@ using System;
 public class GameManager : MonoBehaviour
 
 {
-	public static GameManager instance;
+    public static GameManager instance;
 
     public GameObject loseMenu;
     public GameObject PauseMenu;
@@ -20,10 +20,11 @@ public class GameManager : MonoBehaviour
     public GameObject UI;
     private bool pause = false;
     public int spriteIndex;
+    public bool isHiding;
 
     void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
         }
@@ -36,13 +37,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if ( SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             UI.SetActive(true);
             TitleScreen.SetActive(false);
         }
-        
-        else { 
+
+        else
+        {
             PauseMenu.SetActive(false);
             loseMenu.SetActive(false);
             UI.SetActive(false);
@@ -75,56 +77,53 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadLevel(string name)
-	{
+    {
 
-            StartCoroutine(Load(name));     
-        
-	}
+        StartCoroutine(Load(name));
+
+    }
     private IEnumerator Load(string name)
     {
-            yield return new WaitForSecondsRealtime(1);
-            Debug.Log("Load " + name + " Level");
-            SceneManager.LoadScene(name);
+        yield return new WaitForSecondsRealtime(1);
+        Debug.Log("Load " + name + " Level");
+        SceneManager.LoadScene(name);
 
-            if (name == "Main Menu")
-            {
-                PauseMenu.SetActive(false);
-                loseMenu.SetActive(false);
-                UI.SetActive(false);
-                TitleScreen.SetActive(true);
-            }
-            else
-            {
-                PauseMenu.SetActive(false);
-                loseMenu.SetActive(false);
-                UI.SetActive(true);
-                TitleScreen.SetActive(false);
-
-            }
-
-      
+        if (name == "Main Menu")
+        {
+            PauseMenu.SetActive(false);
+            loseMenu.SetActive(false);
+            UI.SetActive(false);
+            TitleScreen.SetActive(true);
+        }
+        else
+        {
+            PauseMenu.SetActive(false);
+            loseMenu.SetActive(false);
+            UI.SetActive(true);
+            TitleScreen.SetActive(false);
+        }
     }
 
     public void restartCurrentScene()
-	{
+    {
         StartCoroutine(reload());
-	}
+    }
     private IEnumerator reload()
     {
         yield return new WaitForSecondsRealtime(1);
-		int scene = SceneManager.GetActiveScene().buildIndex;
-		SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
         PauseMenu.SetActive(false);
         loseMenu.SetActive(false);
         coinNumber = 0;
         healthNumber = 5;
     }
 
-	public void QuitLevel(string name)
-	{
-		Debug.Log("Quit the Application");
-		Application.Quit();
-	}
+    public void QuitLevel(string name)
+    {
+        Debug.Log("Quit the Application");
+        Application.Quit();
+    }
     public void SoundFXs(AudioClip name)
     {
         GetComponent<AudioSource>().PlayOneShot(name, 1f);

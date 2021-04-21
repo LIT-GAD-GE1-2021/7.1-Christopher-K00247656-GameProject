@@ -2235,6 +2235,7 @@ MonoBehaviour:
   TitleScreen: {fileID: 642443794}
   health: {fileID: 104336503}
   coins: {fileID: 1662377851}
+  healthNumber: 5
   coinNumber: 0
   UI: {fileID: 1103917436}
   spriteIndex: 7
@@ -2731,6 +2732,7 @@ GameObject:
   - component: {fileID: 1414146648}
   - component: {fileID: 1414146650}
   - component: {fileID: 1414146649}
+  - component: {fileID: 1414146651}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2795,6 +2797,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414146647}
   m_CullTransparentMesh: 0
+--- !u!114 &1414146651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414146647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61082dc8b29a2d141a60b7845132012b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: a78577e44f1bc72429b3b441b2d8a814, type: 3}
+  - {fileID: 21300000, guid: c5673049ccac5d742bcc3cd5fca4324f, type: 3}
+  - {fileID: 21300000, guid: 3f70673c14b82e746b1dd78bb5d91596, type: 3}
+  - {fileID: 21300000, guid: 9c0c3be49ea749f46bc6aefe9183ad82, type: 3}
+  - {fileID: 0}
 --- !u!1 &1453040479
 GameObject:
   m_ObjectHideFlags: 0

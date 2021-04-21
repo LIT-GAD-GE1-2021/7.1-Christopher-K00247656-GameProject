@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class CharacterController : MonoBehaviour
 {
 
     Rigidbody2D controller;
     Animator theAnimator;
+    SpriteRenderer sprite;
     public float jumpForce;
     public float speed;
     private bool isGrounded;   
@@ -19,6 +20,7 @@ public class CharacterController : MonoBehaviour
     {
         controller = GetComponent<Rigidbody2D>();
         theAnimator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -63,21 +65,11 @@ public class CharacterController : MonoBehaviour
         {
             isGrounded = false;
             Debug.Log(isGrounded);
-        }
+        }       
     }
 
     void Update()
     {
-            if (controller.velocity.y < 0)
-            {
-                controller.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (controller.velocity.y > 0 && !Input.GetButton("Jump"))
-            {
-                controller.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-
-            }
-
             GameManager.instance.coins.text = "x" + GameManager.instance.coinNumber;
             moveRightandLeft();
             moveUp();
@@ -127,9 +119,37 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+   //public void Hide()
+   // {
+   //     if (Input.GetKey("s") && isHiding == true )
+   //     {
+   //         Debug.Log("Crouched");
+   //         Color hide;
+   //         hide = new Color(123,123,123,255);
+   //         sprite.color = hide;
+   //         isHiding = false;
+   //     }
+   //     else
+   //     {
+   //          Color visible;
+   //         visible = new Color(255, 255, 255, 225);
+   //         sprite.color = visible;
+   //     }  
+        
+   // }
+
 
     void moveUp()
     {
+        if (controller.velocity.y < 0)
+        {
+            controller.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (controller.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            controller.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+
+        }
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
             controller.AddForce(Vector2.up * jumpForce);

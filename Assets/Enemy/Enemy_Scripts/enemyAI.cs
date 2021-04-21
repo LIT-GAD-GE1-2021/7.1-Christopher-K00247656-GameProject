@@ -1,21 +1,24 @@
 ﻿using System.Collections;
+using System.Configuration;
 using System.Security.Cryptography;
 using UnityEngine;
 
 public class enemyAI : MonoBehaviour
 {
+
+    Rigidbody2D enemy;
+    public Transform player;
     public float walkSpeed;
-    public Rigidbody2D enemy;
     public Transform PatrolRay;
     public Transform AttackRay;
-    private bool movingRight = true;
     public int health;
     public float viewDistance;
-    public float FOV;
-    private bool isAttacking;
+    public float FOV;   
     public AudioClip growl;
     public float AudioVolume;
     private bool isPlayed;
+    private bool isAttacking;
+    private bool movingRight = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +30,7 @@ public class enemyAI : MonoBehaviour
     void Start()
     {
         AudioSource audio = gameObject.GetComponent<AudioSource>();
+        enemy = gameObject.GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -59,7 +63,7 @@ public class enemyAI : MonoBehaviour
         if (rayHit.collider != null)
         {
 
-            if (rayHit.collider.tag == "GroundPlatform")
+            if (rayHit.collider.tag == "GroundPlatform" || rayHit.collider.tag == "Patrol Bounds")
             {
                 Patrol();
             }
@@ -69,7 +73,15 @@ public class enemyAI : MonoBehaviour
 
             if (attackView.collider.tag == "Player")
             {
-                isAttacking = true;
+                if (GameManager.instance.isHiding == true)
+                {
+                    bool Ignore = true;
+                    Physics2D.IgnoreCollision(player.GetComponent<CapsuleCollider2D>(),GetComponent<CircleCollider2D>(), Ignore);
+                }
+                else
+                {
+                    isAttacking = true;
+                }
             }
             else
             {

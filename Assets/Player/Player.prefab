@@ -154,7 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 600
   speed: 5
-  healthNumber: 5
 --- !u!95 &6718980646110998943
 Animator:
   serializedVersion: 3
