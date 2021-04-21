@@ -7,7 +7,7 @@ public class enemyAI : MonoBehaviour
 {
 
     Rigidbody2D enemy;
-    public Transform player;
+    public GameObject player;
     public float walkSpeed;
     public Transform PatrolRay;
     public Transform AttackRay;
@@ -75,8 +75,7 @@ public class enemyAI : MonoBehaviour
             {
                 if (GameManager.instance.isHiding == true)
                 {
-                    bool Ignore = true;
-                    Physics2D.IgnoreCollision(player.GetComponent<CapsuleCollider2D>(),GetComponent<CircleCollider2D>(), Ignore);
+                    Physics2D.IgnoreLayerCollision(9,8, true);
                 }
                 else
                 {
@@ -96,6 +95,7 @@ public class enemyAI : MonoBehaviour
         Death();
 
     }
+
     void Attacking()
     {
 

@@ -119,25 +119,6 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-   //public void Hide()
-   // {
-   //     if (Input.GetKey("s") && isHiding == true )
-   //     {
-   //         Debug.Log("Crouched");
-   //         Color hide;
-   //         hide = new Color(123,123,123,255);
-   //         sprite.color = hide;
-   //         isHiding = false;
-   //     }
-   //     else
-   //     {
-   //          Color visible;
-   //         visible = new Color(255, 255, 255, 225);
-   //         sprite.color = visible;
-   //     }  
-        
-   // }
-
 
     void moveUp()
     {
