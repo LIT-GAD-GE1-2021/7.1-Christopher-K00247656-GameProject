@@ -50,10 +50,16 @@ public class CharacterController : MonoBehaviour
             controller.velocity = Vector2.up * 10;
             controller.velocity = Vector2.left * 10;
         }
-        if (collision.gameObject.tag == "Collectable")
+        if (collision.gameObject.tag == "Key")
         {
-            GameManager.instance.coinNumber += 1;
+            GameManager.instance.coinNumber = 1;
+            GameManager.instance.hasKey = true;
             
+        }
+        if (collision.gameObject.tag == "Note")
+        {
+            GameManager.instance.hasNote = true;
+
         }
 
     }
@@ -144,6 +150,7 @@ public class CharacterController : MonoBehaviour
         {
             GameManager.instance.UI.SetActive(false);
             GameManager.instance.loseMenu.SetActive(true);
+            theAnimator.SetBool("isDead", true);
         }
     }
 }

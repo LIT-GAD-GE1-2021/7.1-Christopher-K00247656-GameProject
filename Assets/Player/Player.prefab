@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8403616518596182211}
   - component: {fileID: 6718980646110998943}
   - component: {fileID: 78854865998872365}
-  - component: {fileID: 2112557703156186485}
+  - component: {fileID: 5139045294737470854}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -189,7 +189,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.65, y: 1.29}
   m_Direction: 0
---- !u!114 &2112557703156186485
+--- !u!114 &5139045294737470854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,11 +198,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 674740065684954213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f897c590a7d24244885a90e6114ca8d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d917b2448ab2854f843475da8ecc12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 5228541870653720400}
-  fireBall: {fileID: 5445266790145781250, guid: 8dcb3500571132a49972a63a1456b9ea, type: 3}
+  audioclip: {fileID: 0}
+  hidePrompt: {fileID: 0}
+  rustle: {fileID: 0}
 --- !u!1 &5557101479607405881
 GameObject:
   m_ObjectHideFlags: 0

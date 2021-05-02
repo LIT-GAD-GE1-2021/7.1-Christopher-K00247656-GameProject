@@ -9,8 +9,9 @@ TagManager:
   - Enemy
   - Killzone
   - Patrol Bounds
-  - Collectable
   - HideSpot
+  - Key
+  - Note
   layers:
   - Default
   - TransparentFX

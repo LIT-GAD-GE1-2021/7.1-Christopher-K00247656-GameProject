@@ -13,14 +13,17 @@ public class GameManager : MonoBehaviour
     public GameObject loseMenu;
     public GameObject PauseMenu;
     public GameObject TitleScreen;
+    public GameObject Note;
+    public bool hasKey;
+    public bool hasNote;
     public Text health;
     public Text coins;
-    public int healthNumber = 5;
-    public int coinNumber;
+    [HideInInspector] public int healthNumber = 5;
+    [HideInInspector] public int coinNumber;
     public GameObject UI;
     private bool pause = false;
-    public int spriteIndex;
-    public bool isHiding;
+    [HideInInspector] public int spriteIndex;
+    [HideInInspector] public bool isHiding;
 
     void Awake()
     {
@@ -48,7 +51,7 @@ public class GameManager : MonoBehaviour
             PauseMenu.SetActive(false);
             loseMenu.SetActive(false);
             UI.SetActive(false);
-
+            TitleScreen.SetActive(true);
         }
     }
     void Update()
@@ -72,6 +75,10 @@ public class GameManager : MonoBehaviour
             UI.SetActive(true);
             pause = false;
 
+        }
+        if(hasNote == true)
+        {
+            Note.SetActive(true);
         }
 
     }
@@ -118,6 +125,7 @@ public class GameManager : MonoBehaviour
         coinNumber = 0;
         healthNumber = 5;
     }
+
 
     public void QuitLevel(string name)
     {

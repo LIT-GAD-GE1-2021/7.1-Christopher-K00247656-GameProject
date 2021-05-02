@@ -7,6 +7,7 @@ public class Crouch : MonoBehaviour
 {
     SpriteRenderer sprite;
     public AudioSource audioclip;
+    public GameObject hidePrompt;
     public AudioClip rustle;
     private bool isPlayed;
 
@@ -27,10 +28,9 @@ public class Crouch : MonoBehaviour
     {
         if (Input.GetKey("s"))
         {
-            Debug.Log("Is Crouched");
             sprite.sortingOrder = -3;
             sprite.color = new Color32(123, 123, 123,255);
-            Debug.Log(sprite.color);
+            hidePrompt.SetActive(false);
 
             if (isPlayed == false) {
                 audioclip.PlayOneShot(rustle, 1f);
@@ -42,8 +42,8 @@ public class Crouch : MonoBehaviour
         {
             isPlayed = false;
             sprite.color = new Color32(255, 255, 255, 255);
-            Debug.Log(sprite.color);
             sprite.sortingOrder = 0;
+            hidePrompt.SetActive(true);
         }
     }
 
@@ -51,10 +51,8 @@ public class Crouch : MonoBehaviour
     {
         if (collision.gameObject.tag == "HideSpot")
         {
-            GameManager.instance.isHiding = true;   
-            Debug.Log(GameManager.instance.isHiding);
-
-            
+            GameManager.instance.isHiding = true;
+            hidePrompt.SetActive(true);
         }
     }
 
@@ -63,10 +61,9 @@ public class Crouch : MonoBehaviour
     {
         if (collision.gameObject.tag == "HideSpot")
         {
-            GameManager.instance.isHiding = false;            
-            Debug.Log(GameManager.instance.isHiding);
+            GameManager.instance.isHiding = false;
+            hidePrompt.SetActive(false);
             sprite.color = new Color32(255, 255, 255, 255);
-            Debug.Log(sprite.color);
             sprite.sortingOrder = 0;
 
 

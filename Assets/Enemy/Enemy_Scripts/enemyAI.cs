@@ -1,21 +1,19 @@
 ﻿using System.Collections;
 using System.Configuration;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class enemyAI : MonoBehaviour
 {
 
     Rigidbody2D enemy;
-    public GameObject player;
-    public float walkSpeed;
+    GameObject player;
+    private float walkSpeed;
     public Transform PatrolRay;
     public Transform AttackRay;
     public int health;
     public float viewDistance;
     public float FOV;   
-    public AudioClip growl;
-    public float AudioVolume;
+    private float AudioVolume;
     private bool isPlayed;
     private bool isAttacking;
     private bool movingRight = true;
@@ -31,6 +29,7 @@ public class enemyAI : MonoBehaviour
     {
         AudioSource audio = gameObject.GetComponent<AudioSource>();
         enemy = gameObject.GetComponent<Rigidbody2D>();
+        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
     }
 
     void Update()
@@ -80,6 +79,8 @@ public class enemyAI : MonoBehaviour
                 else
                 {
                     isAttacking = true;
+                    Attacking();
+                    Physics2D.IgnoreLayerCollision(9, 8, false);
                 }
             }
             else
@@ -87,6 +88,8 @@ public class enemyAI : MonoBehaviour
                 walkSpeed = 40f;
                 isAttacking = false;
                 isPlayed = false;
+                //Physics2D.IgnoreLayerCollision(9, 8, false);
+                //Physics2D.IgnoreLayerCollision(9, 8, false);
             }
 
         }
@@ -102,7 +105,7 @@ public class enemyAI : MonoBehaviour
         walkSpeed = 100f;
         if(isPlayed == false)
         {
-        GetComponent<AudioSource>().PlayOneShot( growl, AudioVolume);
+        GetComponent<AudioSource>().Play();
             isPlayed = true;
         }
     }
