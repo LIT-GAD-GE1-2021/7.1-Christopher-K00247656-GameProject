@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Puzzle : MonoBehaviour
 {
-    public GameObject noNote;
-    public GameObject noKey;
-    public GameObject enter;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,15 +13,15 @@ public class Puzzle : MonoBehaviour
         {
             if(GameManager.instance.hasNote == false)
             {
-                noNote.SetActive(true);
+                GameManager.instance.notePrompt.SetActive(true);
             }
             if (GameManager.instance.hasKey == false)
             {
-                noKey.SetActive(true);
+                GameManager.instance.keyPrompt.SetActive(true);
             }
             if (GameManager.instance.hasNote == true && GameManager.instance.hasKey == true)
             {
-                enter.SetActive(true);
+                GameManager.instance.enter.SetActive(true);
             }
         }
 
@@ -35,9 +32,9 @@ public class Puzzle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            noNote.SetActive(false);
-            noKey.SetActive(false);
-            enter.SetActive(false);
+            GameManager.instance.notePrompt.SetActive(false);
+            GameManager.instance.keyPrompt.SetActive(false);
+            GameManager.instance.enter.SetActive(false);
         }
 
     }

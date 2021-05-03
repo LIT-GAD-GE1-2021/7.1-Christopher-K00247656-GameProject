@@ -13,7 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject loseMenu;
     public GameObject PauseMenu;
     public GameObject TitleScreen;
+    public GameObject notePrompt;
+    public GameObject keyPrompt;
+    public GameObject enter;
     public GameObject Note;
+    public GameObject S;
     public bool hasKey;
     public bool hasNote;
     public Text health;
@@ -80,6 +84,10 @@ public class GameManager : MonoBehaviour
         {
             Note.SetActive(true);
         }
+        else
+        {
+            Note.SetActive(false);
+        }
 
     }
 
@@ -101,6 +109,8 @@ public class GameManager : MonoBehaviour
             loseMenu.SetActive(false);
             UI.SetActive(false);
             TitleScreen.SetActive(true);
+            enter.SetActive(false);
+            hasNote = false;
         }
         else
         {
@@ -108,6 +118,11 @@ public class GameManager : MonoBehaviour
             loseMenu.SetActive(false);
             UI.SetActive(true);
             TitleScreen.SetActive(false);
+            enter.SetActive(false);
+            coinNumber = 0;
+            healthNumber = 5;
+            Note.SetActive(false);
+            hasNote = false;
         }
     }
 
@@ -122,6 +137,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
         PauseMenu.SetActive(false);
         loseMenu.SetActive(false);
+        hasNote = false;
         coinNumber = 0;
         healthNumber = 5;
     }

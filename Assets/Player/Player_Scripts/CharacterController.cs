@@ -150,7 +150,7 @@ public class CharacterController : MonoBehaviour
         {
             GameManager.instance.UI.SetActive(false);
             GameManager.instance.loseMenu.SetActive(true);
-            theAnimator.SetBool("isDead", true);
+            Time.timeScale = 0;
         }
     }
 }
